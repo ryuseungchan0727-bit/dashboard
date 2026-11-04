@@ -1,15 +1,91 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>횡성공장 SHE 대시보드</title>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>횡성공장 SHE 통합 대시보드</title>
+<meta name="theme-color" content="#0b1220">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-body{margin:0;font:15px system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:#f6f7f9;color:#14171c}
-main{max-width:520px;margin:0 auto;padding:48px 16px}
-h1{font-size:22px;margin:0 0 6px}p{margin:0 0 28px;color:#5b6270}
-a{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #e3e6eb;border-radius:14px;padding:18px;margin-bottom:12px;text-decoration:none;color:inherit}
-a:hover{border-color:#14171c}b{display:block;font-size:16px}span{color:#5b6270;font-size:13px}i{font-style:normal;font-size:24px}
-</style></head><body><main>
-<h1>횡성공장 SHE 대시보드</h1><p>사번으로 로그인해서 사용하세요.</p>
-<a href="risk.html"><i>⚠️</i><div><b>위험성평가</b><span>상시·정기·수시 평가, 안전사고, 재해지수</span></div></a>
-<a href="fire.html"><i>🧯</i><div><b>소방시설</b><span>도면, 소화기 점검, 자위소방대</span></div></a>
-<a href="iso.html"><i>📋</i><div><b>ISO 45001 법규</b><span>법규 의무, 담당 업무, 이행 현황</span></div></a>
-</main></body></html>
+:root{--bg:#0b1220;--ink:#0f1623;--ink2:#4a5468;--ink3:#7b8497;--line:#e6e9ef;--card:#fff;--page:#f4f6f9}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:"IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--page);color:var(--ink);-webkit-font-smoothing:antialiased;min-height:100vh;word-break:keep-all}
+.hero{background:radial-gradient(1200px 500px at 85% -10%,rgba(56,98,180,.45),transparent 60%),radial-gradient(800px 400px at 0% 120%,rgba(16,122,98,.28),transparent 60%),var(--bg);color:#fff;padding:56px 20px 120px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,#000 30%,transparent);pointer-events:none}
+.wrap{max-width:1080px;margin:0 auto;position:relative;z-index:1}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:48px}
+.mark{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);display:grid;place-items:center}
+.mark svg{width:22px;height:22px}
+.org{font-size:13px;line-height:1.35;color:rgba(255,255,255,.72)}.org b{display:block;color:#fff;font-weight:600;font-size:14px}
+.date{margin-left:auto;font:500 12px "IBM Plex Mono",monospace;color:rgba(255,255,255,.55);letter-spacing:.04em}
+.eyebrow{font:500 12px "IBM Plex Mono",monospace;letter-spacing:.18em;color:#8fb0ff;text-transform:uppercase;margin:0 0 14px}
+h1{font-size:clamp(28px,4.4vw,42px);line-height:1.2;font-weight:700;letter-spacing:-.02em;margin:0 0 14px}
+.lead{font-size:15px;line-height:1.7;color:rgba(255,255,255,.7);margin:0;max-width:560px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:-76px;padding:0 20px;max-width:1120px;margin-left:auto;margin-right:auto;position:relative;z-index:2}
+.card{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 24px 22px;text-decoration:none;color:inherit;box-shadow:0 1px 2px rgba(15,22,35,.04),0 12px 32px -12px rgba(15,22,35,.18);transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,border-color .25s;overflow:hidden;min-height:268px}
+.card::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--ac)}
+.card:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(15,22,35,.05),0 24px 48px -16px rgba(15,22,35,.28);border-color:color-mix(in srgb,var(--ac) 35%,var(--line))}
+.card:focus-visible{outline:3px solid color-mix(in srgb,var(--ac) 50%,transparent);outline-offset:3px}
+.ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:color-mix(in srgb,var(--ac) 10%,#fff);color:var(--ac);margin-bottom:22px;border:1px solid color-mix(in srgb,var(--ac) 18%,#fff)}
+.ic svg{width:26px;height:26px}
+.no{position:absolute;right:22px;top:24px;font:500 12px "IBM Plex Mono",monospace;color:var(--ink3);letter-spacing:.06em}
+.card h2{font-size:20px;font-weight:700;letter-spacing:-.01em;margin:0 0 8px}
+.card p{font-size:13.5px;line-height:1.65;color:var(--ink2);margin:0 0 18px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+.tags span{font-size:12px;color:var(--ink2);background:#f2f4f7;border-radius:999px;padding:4px 10px}
+.go{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--line);font-size:13.5px;font-weight:600;color:var(--ink)}
+.go i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:#fff;transition:transform .25s,background .25s}
+.go i svg{width:15px;height:15px}
+.card:hover .go i{transform:translateX(3px);background:var(--ac)}
+.risk{--ac:#0f7a5f}.fire{--ac:#d1452f}.iso{--ac:#2f5bd3}
+.foot{max-width:1080px;margin:36px auto 0;padding:0 20px 48px;display:flex;gap:20px;flex-wrap:wrap;align-items:center;justify-content:space-between;color:var(--ink3);font-size:12.5px;line-height:1.6}
+.foot .note{display:flex;gap:10px;align-items:flex-start;max-width:640px}
+.foot .note svg{width:16px;height:16px;flex:none;margin-top:2px}
+@media(max-width:900px){.grid{grid-template-columns:1fr;gap:14px}.card{min-height:0}.hero{padding:36px 16px 104px}.top{margin-bottom:36px}.grid{padding:0 16px}.date{display:none}}
+</style></head><body>
+<header class="hero"><div class="wrap">
+  <div class="top">
+    <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5.5c0 4.2 2.9 7.9 7 9 4.1-1.1 7-4.8 7-9V6z"/><path d="m9 12 2 2 4-4"/></svg></div>
+    <div class="org"><b>대상(주) 횡성공장</b>SHE팀</div>
+    <div class="date" id="today"></div>
+  </div>
+  <p class="eyebrow">Safety · Health · Environment</p>
+  <h1>SHE 통합 대시보드</h1>
+  <p class="lead">위험성평가부터 소방시설, 법규 준수까지 한 곳에서 관리합니다.<br>사용할 대시보드를 선택하세요.</p>
+</div></header>
+
+<main class="grid">
+  <a class="card risk" href="risk.html">
+    <span class="no">01</span>
+    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 2.6 17.5A2 2 0 0 0 4.3 20.5h15.4a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></div>
+    <h2>위험성평가</h2>
+    <p>유해·위험요인 발굴부터 감소대책 이행까지, 연간 평가 이력을 누적 관리합니다.</p>
+    <div class="tags"><span>상시·정기·수시</span><span>안전사고</span><span>재해지수</span></div>
+    <div class="go">들어가기<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></div>
+  </a>
+  <a class="card fire" href="fire.html">
+    <span class="no">02</span>
+    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.5 3 3.5 4.6 3.5 8.2A3.5 3.5 0 0 1 12 15a3.5 3.5 0 0 1-3.5-3.8C8.6 9.5 10 8.4 10 6.5"/><path d="M6.5 13.5A6 6 0 0 0 12 21a6 6 0 0 0 5.5-7.5"/></svg></div>
+    <h2>소방시설</h2>
+    <p>도면 위에서 소방설비 위치와 특이사항을 확인하고, 소화기 점검 결과를 연동합니다.</p>
+    <div class="tags"><span>도면 관리</span><span>소화기 점검</span><span>자위소방대</span></div>
+    <div class="go">들어가기<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></div>
+  </a>
+  <a class="card iso" href="iso.html">
+    <span class="no">03</span>
+    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="m9 14 2 2 4-4"/></svg></div>
+    <h2>ISO 45001 법규</h2>
+    <p>안전보건 법적 요구사항과 팀별 의무를 정리하고, 준수평가와 법정 주기를 관리합니다.</p>
+    <div class="tags"><span>법규 의무</span><span>준수평가</span><span>법정 주기</span></div>
+    <div class="go">들어가기<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></div>
+  </a>
+</main>
+
+<footer class="foot">
+  <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+    <span>등록된 사번으로 로그인해서 사용합니다. 대시보드마다 처음 한 번 로그인하면, 화면 위쪽 [대시보드] 버튼으로 다른 대시보드로 바로 이동할 수 있습니다.</span></div>
+  <span>© 대상(주) 횡성공장 SHE팀</span>
+</footer>
+<script>
+(function(){var d=new Date(),w="일월화수목금토"[d.getDay()];var el=document.getElementById("today");if(el)el.textContent=d.getFullYear()+"."+String(d.getMonth()+1).padStart(2,"0")+"."+String(d.getDate()).padStart(2,"0")+" ("+w+")";})();
+</script>
+</body></html>

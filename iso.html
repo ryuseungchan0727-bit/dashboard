@@ -2771,5 +2771,50 @@ function renderAll(fromSync) {
   DB.onAuth((p, msg) => { if (p) startSession(p); else { endSession(); showLogin(msg); } });
 })();
 </script>
-</body>
+<style id="dswCss">
+.dsw-btn{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;margin:0 6px;border:1px solid rgba(127,127,127,.35);border-radius:10px;background:transparent;color:inherit;font:600 13px/1 system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;cursor:pointer;flex:none;white-space:nowrap}
+.dsw-btn:hover{background:rgba(127,127,127,.12)}
+.dsw-btn svg{width:16px;height:16px}
+.dsw-menu{position:fixed;z-index:99999;min-width:250px;background:#fff;color:#14171c;border:1px solid #e3e6eb;border-radius:14px;box-shadow:0 12px 32px rgba(15,20,30,.18);padding:6px;font:14px system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.dsw-menu[hidden]{display:none!important}
+.dsw-menu a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;color:inherit;text-decoration:none}
+.dsw-menu a:hover{background:#f2f4f7}
+.dsw-menu a.cur{background:#eef2ff;pointer-events:none}
+.dsw-menu a i{font-style:normal;font-size:18px;width:22px;text-align:center}
+.dsw-menu a b{display:block;font-weight:600}
+.dsw-menu a span{display:block;font-size:12px;color:#5b6270;margin-top:2px}
+.dsw-menu .dsw-h{padding:8px 12px 6px;font-size:12px;color:#5b6270}
+@media(max-width:640px){.dsw-btn .dsw-l{display:none}.dsw-btn{padding:0 9px;margin:0 4px}}
+</style><script>
+(function(){
+var DSW_CUR="iso",BRAND="#brandHome",LOGIN="#lemp";
+var L=[["risk","risk.html","⚠️","위험성평가","상시·정기·수시 · 안전사고 · 재해지수"],
+       ["fire","fire.html","🧯","소방시설","도면 · 소화기 점검 · 자위소방대"],
+       ["iso","iso.html","📋","ISO 45001 법규","법규 의무 · 이행 현황"]];
+function mk(){
+  if(document.getElementById("dswBtn"))return true;
+  var b=document.querySelector(BRAND);if(!b)return false;
+  var btn=document.createElement("button");btn.type="button";btn.id="dswBtn";btn.className="dsw-btn";btn.title="다른 대시보드로 이동";
+  btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span class="dsw-l">대시보드</span>';
+  var m=document.createElement("div");m.className="dsw-menu";m.id="dswMenu";m.hidden=true;
+  m.innerHTML='<div class="dsw-h">다른 대시보드로 이동 · 처음 한 번만 로그인</div>'+L.map(function(x){return '<a href="'+x[1]+'"'+(x[0]===DSW_CUR?' class="cur"':'')+'><i>'+x[2]+'</i><div><b>'+x[3]+(x[0]===DSW_CUR?' (지금 화면)':'')+'</b><span>'+x[4]+'</span></div></a>'}).join("");
+  document.body.appendChild(m);
+  b.insertAdjacentElement("afterend",btn);
+  btn.addEventListener("click",function(e){e.stopPropagation();
+    if(!m.hidden){m.hidden=true;return}
+    var r=btn.getBoundingClientRect();m.hidden=false;
+    var w=m.offsetWidth,x=Math.min(r.left,innerWidth-w-8);m.style.left=Math.max(8,x)+"px";m.style.top=(r.bottom+6)+"px"});
+  document.addEventListener("click",function(e){if(!m.hidden&&!m.contains(e.target))m.hidden=true});
+  addEventListener("keydown",function(e){if(e.key==="Escape")m.hidden=true});
+  addEventListener("resize",function(){m.hidden=true});
+  return true}
+/* 사번 기억: 한 대시보드에서 로그인하면 다른 대시보드 로그인 칸에 미리 채움 */
+function fill(){var i=document.querySelector(LOGIN);if(i&&!i.value&&!i.dataset.dswf){var v="";try{v=localStorage.getItem("hs_emp")||""}catch(e){}if(v){i.value=v;i.dataset.dswf="1";i.dispatchEvent(new Event("input",{bubbles:true}))}}}
+document.addEventListener("submit",function(e){var i=e.target&&e.target.querySelector&&e.target.querySelector(LOGIN);if(i&&i.value.trim()){try{localStorage.setItem("hs_emp",i.value.trim())}catch(x){}}},true);
+document.addEventListener("click",function(e){var bt=e.target.closest&&e.target.closest("button");if(!bt)return;var i=document.querySelector(LOGIN);if(i&&i.value.trim()&&(bt.type==="submit"||(bt.form&&bt.form.contains(i)))){try{localStorage.setItem("hs_emp",i.value.trim())}catch(x){}}},true);
+function tick(){mk();fill()}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",tick);else tick();
+new MutationObserver(tick).observe(document.documentElement,{childList:true,subtree:true});
+})();
+</script></body>
 </html>
