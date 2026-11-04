@@ -514,6 +514,71 @@ details.more[open] > summary { margin-bottom: 18px; }
 .pp-prev:empty { display: none; }
 .pp-prev .ph { position: relative; }
 .pp-prev .ph img { cursor: zoom-in; }
+
+/* ===== 모바일 최적화 (하단 탭바 · 카드형 목록) ===== */
+@media (max-width: 760px) {
+  body { -webkit-text-size-adjust: 100%; }
+  .top { position: relative; top: 0; }
+  .top-in { padding-block: 10px; gap: 10px; row-gap: 8px; }
+  .brand-t { font-size: 16px; }
+  .top-r { gap: 8px; }
+  .top-r select { height: 34px; font-size: 13px; }
+  .tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; border-top: 1px solid var(--line);
+    background: color-mix(in srgb, var(--surface) 94%, transparent); -webkit-backdrop-filter: saturate(1.6) blur(16px); backdrop-filter: saturate(1.6) blur(16px);
+    padding-bottom: env(safe-area-inset-bottom, 0px); box-shadow: 0 -6px 20px rgba(15, 22, 35, .06); }
+  .tabs-in { display: flex; gap: 0; padding: 0 2px; overflow: visible; max-width: none; }
+  .tab { flex: 1 1 0; min-width: 0; flex-direction: column; justify-content: center; gap: 4px; padding: 9px 0 8px; border: 0; border-radius: 0;
+    font-size: 10.5px; font-weight: 600; letter-spacing: -.02em; color: var(--muted); position: relative; }
+  .tab svg { width: 22px; height: 22px; }
+  .tab[aria-selected="true"] { color: var(--accent); border: 0; }
+  .tab[aria-selected="true"]::before { content: ""; position: absolute; top: 0; left: 28%; right: 28%; height: 2.5px; border-radius: 0 0 3px 3px; background: var(--accent); }
+  main { padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important; }
+  .toast, #toast { bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important; }
+  .pagehead h1 { font-size: 21px; }
+  .card { padding: 16px; }
+  /* 카드형 목록: 평가 항목 */
+  .tw-m { overflow: visible; }
+  table.imain, table.imain tbody, table.acc, table.acc tbody { display: block; width: 100%; }
+  table.imain thead, table.acc thead { display: none; }
+  table.imain tr, table.acc tr { display: grid; gap: 6px 10px; padding: 14px 14px 12px; margin: 0 0 10px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); box-shadow: 0 1px 2px rgba(15, 22, 35, .04); }
+  table.imain tr:active, table.acc tr:active { background: var(--surface-2); }
+  table.imain td, table.acc td { display: block; padding: 0 !important; border: 0 !important; min-width: 0 !important; white-space: normal !important; background: none !important; font-size: 13.5px; line-height: 1.5; }
+  table.imain tr { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "m t s" "h h h" "a a a" "p p r" "d d d" "ph ph ph"; }
+  table.imain td:nth-child(1) { grid-area: m; font-weight: 700; }
+  table.imain td:nth-child(2) { grid-area: t; }
+  table.imain td:nth-child(3) { grid-area: p; color: var(--ink-2); font-size: 12.5px; }
+  table.imain td:nth-child(3)::before { content: "장소 "; color: var(--muted); }
+  table.imain td:nth-child(4) { grid-area: h; padding-top: 4px !important; border-top: 1px solid var(--line) !important; }
+  table.imain td:nth-child(5) { grid-area: r; justify-self: end; }
+  table.imain td:nth-child(6) { grid-area: a; color: var(--ink-2); }
+  table.imain td:nth-child(6)::before { content: "개선대책 · "; color: var(--muted); font-size: 12px; }
+  table.imain td:nth-child(7) { grid-area: d; font-size: 12.5px; color: var(--ink-2); }
+  table.imain td:nth-child(7)::before { content: "담당팀 "; color: var(--muted); }
+  table.imain td:nth-child(8) { grid-area: s; justify-self: end; }
+  table.imain td:nth-child(9) { grid-area: ph; }
+  table.imain td:nth-child(9):not(:has(img)) { display: none; }
+  table.imain .clip { -webkit-line-clamp: 3; }
+  /* 카드형 목록: 안전사고 */
+  table.acc tr { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "no dt c" "ds ds ds" "ty pr pr" "who who who" "lk lk lk"; }
+  table.acc td:nth-child(1) { grid-area: no; font-weight: 700; }
+  table.acc td:nth-child(1)::before { content: "No."; }
+  table.acc td:nth-child(2) { grid-area: dt; color: var(--ink-2); }
+  table.acc td:nth-child(3) { grid-area: pr; justify-self: end; font-size: 12.5px; color: var(--ink-2); }
+  table.acc td:nth-child(4) { grid-area: ty; font-size: 12.5px; }
+  table.acc td:nth-child(4) .small { display: inline; margin-left: 4px; }
+  table.acc td:nth-child(5) { grid-area: c; }
+  table.acc td:nth-child(6) { grid-area: ds; font-weight: 600; padding-top: 4px !important; border-top: 1px solid var(--line) !important; }
+  table.acc td:nth-child(7) { grid-area: who; }
+  table.acc td:nth-child(7) div { display: inline; margin-left: 6px; }
+  table.acc td:nth-child(8) { grid-area: lk; }
+  table.acc td[colspan] { grid-column: 1 / -1; }
+  /* 입력 요소는 16px (iOS 확대 방지) */
+  input:not([type=checkbox]):not([type=radio]), select, textarea { font-size: 16px !important; }
+  .top-r select, #sel-year { font-size: 14px !important; }
+  .btn { min-height: 38px; }
+  .modal { padding: 0 !important; place-items: end center !important; }
+  .modal-box { border-radius: 20px 20px 0 0 !important; max-height: 92vh !important; width: 100% !important; padding: 20px 16px calc(20px + env(safe-area-inset-bottom, 0px)) !important; }
+}
 </style>
 </head><body>
 <header class="top" id="top" hidden>
@@ -1667,7 +1732,7 @@ window.REG_IMG={"site": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
   }
   function itemsTable(list) {
     if (!list.length) return '<p class="small">해당 항목이 없습니다.</p>';
-    return `<div class="tw"><table class="items"><thead><tr><th>월</th><th>팀 · 구역</th><th>장소</th><th>위험요인 · 상황</th><th>위험성</th><th>개선대책</th><th>담당팀</th><th>상태</th><th>사진 (개선 전 → 후)</th></tr></thead><tbody>
+    return `<div class="tw tw-m"><table class="items imain"><thead><tr><th>월</th><th>팀 · 구역</th><th>장소</th><th>위험요인 · 상황</th><th>위험성</th><th>개선대책</th><th>담당팀</th><th>상태</th><th>사진 (개선 전 → 후)</th></tr></thead><tbody>
       ${list.map((x) => `<tr class="clickable" data-id="${x.id}"><td class="num">${x._carry ? `<span class="small">'${String(itemYear(x)).slice(2)}년</span> ` : ''}${x.m}월${x._carry ? '<div><span class="pill p-hi">전년 이월</span></div>' : ''}${typePill(x)}</td><td><b>${esc(x.team)}</b><div class="small">${esc(zoneName(x.zone))}</div></td><td>${esc(x.place)}</td><td style="min-width:220px"><b>${esc(x.haz)}</b><div class="clip">${esc(x.sit)}</div></td><td>${levelPill(x.r1)}</td><td style="min-width:180px"><div class="clip">${esc(x.act)}</div>${ctlTags(x)}</td><td style="white-space:nowrap">${esc(x.dept)}</td><td>${statusPill(x)}</td><td>${thumbPair(x)}</td></tr>`).join('')}
     </tbody></table></div>`;
   }
@@ -2488,7 +2553,7 @@ window.REG_IMG={"site": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBD
           <select id="af-cls"><option value="">산재·공상 전체</option>${['산재', '공상'].map((c) => `<option ${f.cls === c ? 'selected' : ''}>${c}</option>`).join('')}</select>
           <select id="af-link"><option value="">수시평가 전체</option><option value="none" ${f.link === 'none' ? 'selected' : ''}>수시평가 없음</option><option value="yes" ${f.link === 'yes' ? 'selected' : ''}>수시평가 있음</option></select>
           <input type="search" id="af-q" placeholder="사고 내용·공정·대책 검색" value="${esc(f.q)}"><button class="btn sm ghost" id="af-reset">초기화</button></div>
-        <div class="tw"><table class="items acc"><thead><tr><th>No</th><th>발생일</th><th>공정</th><th>유형 · 원인</th><th>구분</th><th>사고 내용</th><th>재해자</th><th>수시 위험성평가</th></tr></thead><tbody>
+        <div class="tw tw-m"><table class="items acc"><thead><tr><th>No</th><th>발생일</th><th>공정</th><th>유형 · 원인</th><th>구분</th><th>사고 내용</th><th>재해자</th><th>수시 위험성평가</th></tr></thead><tbody>
         ${L.map((a) => { const lk2 = accLinks(a), op = lk2.filter((x) => x.status === 'open').length;
           return `<tr class="clickable" data-acc="${esc(a.id)}"><td class="num">${esc(a.no ?? '')}</td><td class="num" style="white-space:nowrap">${esc(a.date)}</td><td>${esc(a.proc)}</td><td style="white-space:nowrap">${esc(a.type)}<div class="small">${esc(a.cause)}</div></td><td>${clsPill(a.cls)}</td><td style="min-width:240px">${esc(a.desc)}${a.measure ? `<div class="small clip">대책: ${esc(a.measure)}</div>` : ''}</td><td class="small" style="white-space:nowrap">${esc(a.company || '')}<div>${a.age ? a.age + '세' : ''}${tenTxt(a) ? ' · ' + esc(tenTxt(a)) : ''}</div></td>
             <td style="white-space:nowrap">${lk2.length ? `<span class="pill p-done">평가 ${lk2.length}건</span>${op ? ` <span class="pill p-open">미결 ${op}</span>` : ''}` : `<span class="pill p-hi">평가 없음</span>${can ? ` <button class="btn sm" data-accreg="${esc(a.id)}">작성</button>` : ''}`}</td></tr>`; }).join('') || '<tr><td colspan="8" class="small">해당 사고가 없습니다.</td></tr>'}

@@ -2771,7 +2771,48 @@ function renderAll(fromSync) {
   DB.onAuth((p, msg) => { if (p) startSession(p); else { endSession(); showLogin(msg); } });
 })();
 </script>
-<style id="dswCss">
+<style id="isoMobile">
+@media (max-width:760px){
+  body{-webkit-text-size-adjust:100%}
+  .top .wrap{padding-top:10px!important;padding-bottom:2px!important;gap:8px 10px!important}
+  .brand{min-width:0!important;flex:1 1 auto!important;gap:10px!important}
+  .brand p{display:none!important}
+  .brand h1{font-size:16px!important;white-space:nowrap}
+  .brand .logo{width:34px!important;height:34px!important;flex:none}
+  #userbox{width:100%;margin-left:0!important;gap:6px!important;flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+  #userbox::-webkit-scrollbar{display:none}
+  #userbox .modebadge{display:none}
+  #userbox .uname{margin-right:auto;white-space:nowrap;font-size:13.5px}
+  #userbox .uname small{display:none}
+  #userbox .online{white-space:nowrap;font-size:12px}
+  #userbox .ubtn{height:30px;padding:0 10px;font-size:12px;white-space:nowrap;flex:none}
+  .tabs{scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent);padding-right:24px}
+  .tabs::-webkit-scrollbar{display:none}
+  .tabs button{padding:11px 11px!important;font-size:13.5px}
+  .teambar .wrap{padding-top:8px!important;padding-bottom:8px!important;scrollbar-width:none}
+  .teambar .wrap::-webkit-scrollbar{display:none}
+  main .wrap{padding-left:14px!important;padding-right:14px!important}
+  .form3,.form,.form2{grid-template-columns:minmax(0,1fr)!important}
+  .form3>*,.form>*,.form2>*{grid-column:auto!important;min-width:0}
+  input:not([type=checkbox]):not([type=radio]),select,textarea{font-size:16px!important;max-width:100%}
+  .card{border-radius:14px}
+  .modal{padding:44px 0 0!important}
+  .mbox{margin-top:auto;border-radius:20px 20px 0 0!important;padding-bottom:env(safe-area-inset-bottom,0px)}
+  .dlg>*{width:100%!important;max-width:none!important}
+  .dlg{align-items:flex-end!important;padding:0!important}
+  .dlg>div{border-radius:20px 20px 0 0!important}
+  table{font-size:13px}
+}
+</style>
+<script>
+(function(){
+  function center(){var t=document.getElementById('tabs');if(!t)return;var b=t.querySelector('button.on');if(!b)return;
+    var x=b.offsetLeft-(t.clientWidth-b.offsetWidth)/2;t.scrollTo({left:Math.max(0,x),behavior:'smooth'})}
+  function hook(){var t=document.getElementById('tabs');if(!t||t.dataset.mh)return;t.dataset.mh='1';
+    new MutationObserver(center).observe(t,{attributes:true,subtree:true,childList:true,attributeFilter:['class']});center()}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',hook);else hook();
+})();
+</script><style id="dswCss">
 .dsw-btn{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;margin:0 6px;border:1px solid rgba(127,127,127,.35);border-radius:10px;background:transparent;color:inherit;font:600 13px/1 system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;cursor:pointer;flex:none;white-space:nowrap}
 .dsw-btn:hover{background:rgba(127,127,127,.12)}
 .dsw-btn svg{width:16px;height:16px}
