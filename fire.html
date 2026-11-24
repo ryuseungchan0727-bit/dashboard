@@ -1332,7 +1332,18 @@ details.hmore[open] .chev{transform:rotate(-135deg)}
 .xg{width:100%;display:flex;flex-wrap:wrap;gap:6px;align-items:center}.xg>span{font-size:12px;color:var(--ink3);min-width:84px}
 .xchip{border:1px solid var(--line);background:#fff;border-radius:8px;padding:4px 8px;font-size:12px;font-family:inherit}.xchip small{color:var(--ink3);margin-left:3px}.xchip.bad{border-color:#f3c4c4;background:#fff5f5}
 .xh{display:grid;gap:4px;margin-bottom:6px}.xr{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13px;padding:5px 0;border-bottom:1px solid var(--line)}.xr b{min-width:32px}.xr small{color:var(--ink3);font-size:12px}.xr .xi{width:100%;padding-left:38px}
-.xs{font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 8px}.xs.ok{background:#e7f6ec;color:#067647}.xs.bad{background:#fff1f1;color:#b42318}.xs.un{background:var(--bg);color:var(--ink3)}
+.xs{font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 8px}.xs.ok{background:#e7f6ec;color:#067647}.xs.bad{background:#fff1f1;color:#b42318}.xs.un{background:var(--bg);color:var(--ink3)}.xs.fix{background:#eef4ff;color:#1d4ed8}
+.xk{display:grid;grid-template-columns:repeat(auto-fit,minmax(138px,1fr));gap:10px;margin:14px 0 12px}
+.xk .kpi{padding:14px 16px}.xk .kpi .v{font-size:28px}.xk .kpi.good .v{color:#067647}.xk .kpi.warn .v{color:var(--note)}.xk .kpi.warn{border-color:var(--note-line);background:linear-gradient(180deg,#fff 0%,var(--note-bg) 100%)}
+.xup svg{width:18px;height:18px;vertical-align:-4px;margin-right:4px}.xup b{display:inline-flex;align-items:center;justify-content:center;gap:2px}.xup.mini b{justify-content:flex-start;white-space:nowrap}
+.xup.mini{padding:10px 14px;grid-template-columns:auto 1fr;text-align:left;align-items:center;gap:10px}.xup.mini b{font-size:13.5px}
+.xcols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}.xcols .hcard{padding:16px 16px}
+.xcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px;min-width:0}.xcard h3{font-size:15px;margin:0 0 10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}.xcard h3 .sp{flex:1}
+.xdraft{white-space:pre-wrap;font-family:inherit;font-size:13px;line-height:1.75;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:8px 0 0;user-select:text}
+.xdt{font-size:13px;font-weight:700;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.lt td.num,.lt th.num{text-align:right;font-variant-numeric:tabular-nums}.lt tr.tot td{font-weight:700;background:var(--bg)}
+#extSheet .sh-head .sel{min-width:130px}#extSheet .lt td:first-child,#extSheet .lt th,#extSheet .xs{white-space:nowrap}
+@media (max-width:900px){.xcols{grid-template-columns:1fr}.xk{grid-template-columns:repeat(3,1fr);gap:8px}.xk .kpi{padding:10px 10px}.xk .kpi .v{font-size:21px}.xk .kpi .lb{min-height:0}.xup.mini span{display:none}#extSheet .sh-head .hbtn .lbl2{display:none}}
 .opt small{display:block;font-size:11.5px;color:var(--ink3);font-weight:500}
 
 #types.lock{opacity:.4;pointer-events:none}
@@ -1356,8 +1367,8 @@ details.hmore[open] .chev{transform:rotate(-135deg)}
   .scrim.on{z-index:940!important}
   /* 메뉴 줄 + 도면 선택 줄 */
   .floors{display:block!important;padding:0!important;overflow:hidden!important;min-width:0;width:100%}
-  .fl-nav{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}
-  .fl-nav button{justify-content:center;height:44px!important;padding:0 6px!important;margin:0!important;font-size:13.5px}
+  .fl-nav{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+  .fl-nav button{justify-content:center;height:44px!important;padding:0 4px!important;margin:0!important;font-size:12.5px;white-space:nowrap;gap:4px}
   .fl-nav button::before{display:none!important}
   .fl-nav button.on::after{left:22%!important;right:22%!important}
   .fl-areas{display:flex;min-width:0;gap:6px;overflow-x:auto;padding:8px 12px;scrollbar-width:none;scroll-behavior:smooth;background:var(--surface)}
@@ -1434,7 +1445,7 @@ details.hmore[open] .chev{transform:rotate(-135deg)}
     </div>
     <div class="sec">
       <div class="sec-h"><h3>보기</h3></div>
-      <button class="opt" id="extView"><span>소화기 이번 달 점검 상태<small>초록 = 점검 완료 · 회색 = 미점검</small></span><span class="sw"></span></button>
+      <button class="opt" id="extView"><span>소화기 이번 달 점검 상태<small>초록 = 점검 완료 · 빨강 = 이상(미조치) · 회색 = 미점검</small></span><span class="sw"></span></button>
       <button class="opt" id="onlyNote"><span>특이사항 있는 설비만<small>기록된 설비만 도면에 표시</small></span><span class="sw"></span></button>
     </div>
   </aside>
@@ -1487,6 +1498,13 @@ details.hmore[open] .chev{transform:rotate(-135deg)}
       <div class="crew-tools"><div class="msearch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="crewQ" placeholder="이름·소속·연락처 검색" autocomplete="off"></div>
       <button class="hbtn" id="crewHist">개정 이력</button><button class="hbtn" id="crewPdf">PDF 출력</button><button class="hbtn" id="crewCsv">엑셀</button><button class="btn sm" id="crewAdd">+ 인원 추가</button></div></div>
     <div class="sh-body"><div class="hwrap" id="crewBody"></div></div>
+  </section>
+  <section class="sheet" id="extSheet">
+    <div class="sh-head"><h2>소화기 점검</h2><span class="sub" id="exSub"></span><span class="sp"></span>
+      <select class="sel" id="exMonth" aria-label="점검 월"></select>
+      <button class="hbtn" id="exCsv" title="선택한 달 소화기별 점검 결과">결과<span class="lbl2"> 엑셀(CSV)</span></button>
+      <button class="hbtn" id="exDraftBtn">기안<span class="lbl2"> 문구</span></button></div>
+    <div class="sh-body"><div class="hwrap" id="exBody"></div></div>
   </section>
   <section class="sheet" id="mgmtSheet">
     <div class="sh-head"><h2>통합 관리</h2><span class="sub" id="mgSub"></span></div>
@@ -1606,11 +1624,6 @@ details.hmore[open] .chev{transform:rotate(-135deg)}
     <div class="err" id="rsErr"></div></div>
   <div class="mf" id="rsF1"><button class="btn ghost" data-mclose>취소</button><button class="btn danger" id="rsGo">삭제</button></div>
   <div class="mf" id="rsF2" hidden><button class="btn ghost" id="rsNo">아니요</button><button class="btn danger" id="rsYes">예, 삭제합니다</button></div></div></div>
-
-<div class="modal" id="extModal"><div class="mbox wide extbox">
-  <div class="mh"><h3>소화기 월간 점검</h3><span class="sub" id="exSub"></span><button class="x" data-mclose aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
-  <div class="mb" id="exBody"></div>
-  <div class="mf" id="exFoot"><button class="btn ghost" data-mclose>닫기</button></div></div></div>
 
 <div class="modal" id="acctModal"><div class="mbox">
   <div class="mh"><h3>계정 추가</h3><button class="x" data-mclose aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
@@ -16430,7 +16443,7 @@ const pt=(a,x,y)=>map.unproject([x,y],a.zmax);
 const unpt=(a,ll)=>{const p=map.project(ll,a.zmax);return {x:Math.round(p.x*10)/10,y:Math.round(p.y*10)/10}};
 function areaBounds(a){return L.latLngBounds(pt(a,0,a.H),pt(a,a.W,0))}
 function iconFor(f){
-  const cls=['mk'];if(f.est)cls.push('est');if(S.extView&&f.t==='ext'){const r=extRec(f.id);cls.push(!r?'xun':extBad(r)?'xbad':'xok')}if(hasNote(f._k))cls.push('note');if(S.sel===f._k)cls.push('sel');if(S.pick&&S.pick.k===f._k)cls.push('ghost');
+  const cls=['mk'];if(f.est)cls.push('est');if(S.extView&&f.t==='ext'){const r=extRec(f.id);cls.push(!r?'xun':extOpen(r)?'xbad':'xok')}if(hasNote(f._k))cls.push('note');if(S.sel===f._k)cls.push('sel');if(S.pick&&S.pick.k===f._k)cls.push('ghost');
   let anc=[20,20];if(f.g){const [k,n]=f.g;const ang=-Math.PI/2+k*2*Math.PI/n;const r=n===2?15:18;anc=[20-Math.round(Math.cos(ang)*r*(n===2?0:1)+(n===2?(k?-15:15):0)),20-Math.round(n===2?0:Math.sin(ang)*r)]}
   return L.divIcon({className:cls.join(' '),html:ic(f.t),iconSize:[40,40],iconAnchor:anc});
 }
@@ -16466,11 +16479,12 @@ function fit(){const a=AMAP[S.area];const pad=innerWidth<900?[16,16]:[40,40];map
 /* ---------- sidebar / floors ---------- */
 const NAV_ICONS={home:'<rect x="3.5" y="3.5" width="7" height="8" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="5" rx="1.5"/><rect x="13.5" y="11.5" width="7" height="9" rx="1.5"/><rect x="3.5" y="14.5" width="7" height="6" rx="1.5"/>',
   crew:'<circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5a5.5 5.5 0 0 1 11 0"/><path d="M16 5.2a3.2 3.2 0 0 1 0 5.9M20.5 19.5a5.5 5.5 0 0 0-3.4-5.1"/>',
-  mgmt:'<rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 9h17M8 13h8M8 16.5h5"/>'};
+  mgmt:'<rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 9h17M8 13h8M8 16.5h5"/>',
+  ext:'<rect x="8" y="8" width="8" height="13" rx="2.5"/><path d="M10 8V5.5h4V8M14 5.5h3l2 2M12 12v4"/>'};
 function curSheet(){const s=$$('.sheet.on')[0];return s?s.id:null}
 function renderFloors(){
-  const cs=curSheet();const nav=[['home','현황판','homeSheet'],['crew','자위소방대','crewSheet'],['mgmt','통합 관리','mgmtSheet']];
-  $('#floors').innerHTML='<div class="fl-nav">'+nav.map(([k,l,id],i)=>`<button class="navb ${cs===id?'on':''} ${i===2?'last':''}" data-nav="${k}">${SV(NAV_ICONS[k])}${l}</button>`).join('')+'</div><div class="fl-areas">'+
+  const cs=curSheet();const nav=[['home','현황판','homeSheet'],['ext','소화기 점검','extSheet'],['crew','자위소방대','crewSheet'],['mgmt','통합 관리','mgmtSheet']];
+  $('#floors').innerHTML='<div class="fl-nav">'+nav.map(([k,l,id],i)=>`<button class="navb ${cs===id?'on':''} ${i===nav.length-1?'last':''}" data-nav="${k}">${SV(NAV_ICONS[k])}${l}</button>`).join('')+'</div><div class="fl-areas">'+
     AREAS.map(a=>{const fs=FAC.filter(f=>f.a===a.key&&(!S.owner||(f.t==='ext'&&ownerOf(f)===S.owner)));const nn=fs.some(f=>hasNote(f._k));
       return `<button data-a="${a.key}" class="${a.key===S.area&&!cs?'on':''}">${esc(a.label)}<em>${fs.length}</em>${nn?'<span class="nd"></span>':''}</button>`}).join('')+'</div>';
   const fa=$('#floors .fl-areas'),fb=fa&&(fa.querySelector('button.on')||fa.querySelector(`[data-a="${S.area}"]`));
@@ -16587,7 +16601,7 @@ function refreshViews(remote){
   if(!S.pick)renderMarkers();
   if(S.sel&&$('#detail').classList.contains('on')&&$('#dHead'))fillDetail();
   const cs=curSheet();
-  if(cs==='homeSheet')renderHome();if(cs==='notesSheet')renderNoteCards();if(cs==='listSheet')renderTable();if(cs==='crewSheet')renderCrew();if(cs==='mgmtSheet')renderMgmt();
+  if(cs==='homeSheet')renderHome();if(cs==='notesSheet')renderNoteCards();if(cs==='listSheet')renderTable();if(cs==='crewSheet')renderCrew();if(cs==='mgmtSheet')renderMgmt();if(cs==='extSheet'&&!EXP_PARSE)renderExt();
 }
 
 /* ---------- 설비 등록 / 이동 (도면 클릭) ---------- */
@@ -17150,7 +17164,7 @@ function renderFocus(){
     ${card('open',!open.length,'미조치 특이사항',open.length,'건',old.length?`<b class="warn">30일 넘게 미조치 ${old.length}건</b>`:open.length?`${new Set(open.map(x=>x.k)).size}개 설비`:'모두 조치 완료','특이사항 보기')}
     ${card('month',true,`${now.getMonth()+1}월 새 특이사항`,month.length,'건',`이 중 조치 완료 ${month.filter(x=>!isOpen(x.n)).length}건`,'도면에서 등록')}
     ${card('crew',crewOk,'자위소방대 명단',CREW.length,'명',!L?'<b class="warn">조직도 확정 필요</b>':pend&&pend.n?`<b class="warn">확정 이후 변경 ${pend.n}건 미확정</b>`:noPh?`연락처 미입력 ${noPh}명`:`${cvDate(L.eff)} 기준 확정`,'명단 보기')}
-    ${(()=>{const ym=extCurYm(),ms=extMonths(),last=ms[ms.length-1];if(ym){const x=extStat(ym);return card('ext',!x.un.length&&!x.bad,`${now.getMonth()+1}월 소화기 점검`,`${x.done}/${x.total}`,'개',x.bad?`<b class="warn">이상 ${x.bad}개</b> · 미점검 ${x.un.length}`:x.un.length?`미점검 ${x.un.length}개`:'전체 점검 완료','점검 현황')}
+    ${(()=>{const ym=extCurYm(),ms=extMonths(),last=ms[ms.length-1];if(ym){const x=extStat(ym);return card('ext',!x.un.length&&!x.open,`${now.getMonth()+1}월 소화기 점검`,`${x.done}/${x.total}`,'개',x.open?`<b class="warn">이상 미조치 ${x.open}개</b> · 미점검 ${x.un.length}`:x.un.length?`미점검 ${x.un.length}개${x.bad?` · 이상 ${x.bad}개 조치 완료`:''}`:x.bad?`전체 점검 · 이상 ${x.bad}개 조치 완료`:'전체 점검 완료','점검 현황')}
       return card('ext',false,`${now.getMonth()+1}월 소화기 점검`,'0',`/${FAC.filter(f=>f.t==='ext').length}개`,last?`이번 달 결과 아직 없음 · 최근 ${+last.slice(5)}월`:'점검 엑셀을 올리면 자동 집계','점검 결과 올리기')})()}
     ${adm?card('trash',!tr,'삭제 보관함',tr,'건',tr?'30일 안에 되살릴 수 있음':'최근 삭제 없음','보관함'):''}</div>`;
   $$('[data-fg]',el).forEach(b=>b.onclick=()=>{const k=b.dataset.fg;if(k==='open'){NF='open';showSheet('notesSheet')}else if(k==='month'){closeSheets()}else if(k==='crew')showSheet('crewSheet');else if(k==='trash'){MG.tab='trash';showSheet('mgmtSheet')}else if(k==='ext'){const ym=extCurYm();openExt(ym||undefined)}});
@@ -17165,10 +17179,13 @@ function extCurYm(){const m=extMonths(),n=ymNow();return m.includes(n)?n:null}
 function extRec(id,ym){ym=ym||ymNow();const M=(ST.ext||{})[ym];return M&&M.rec?M.rec[id]:null}
 const BADV=v=>v&&!/^(o|ㅇ|정상|양호|✓|v)$/i.test(String(v).trim());
 function extBad(r){return !!r&&((r.r&&!/정상|조치\s*완료/.test(r.r))||BADV(r.a)||BADV(r.l)||BADV(r.p))}
+/* 조치여부: 엑셀 조치여부 열(O/완료) 또는 종합판정 '조치완료' */
+function extFixed(r){return !!r&&(/^(o|ㅇ|y|완료|조치\s*완료)$/i.test(String(r.fx||'').trim())||/조치\s*완료/.test(r.r||''))}
+const extOpen=r=>extBad(r)&&!extFixed(r);
 function extBadTxt(r){const b=[];if(BADV(r.a))b.push('외관');if(BADV(r.l))b.push('표지');if(BADV(r.p))b.push('압력');if(!b.length&&r.r&&!/정상/.test(r.r))b.push(r.r);return b.join('·')+' 이상'}
-function extStat(ym){const E=FAC.filter(f=>f.t==='ext'),M=(ST.ext||{})[ym],rec=(M&&M.rec)||{};const done=E.filter(f=>rec[f.id]),bad=done.filter(f=>extBad(rec[f.id]));return {total:E.length,done:done.length,bad:bad.length,badL:bad,un:E.filter(f=>!rec[f.id]),at:M&&M.at,by:M&&M.by,date:M&&M.date,file:M&&M.file,extra:Object.keys(rec).filter(id=>!E.some(f=>f.id===id))}}
-function extHistHTML(id){const ms=extMonths().slice().reverse().slice(0,12);if(!ms.length)return '<div class="d-sec">월간 점검 이력</div><p class="hint">아직 올린 점검 결과가 없습니다. 현황판 → 소화기 점검 → 점검 결과 올리기</p>';
-  return `<div class="d-sec">월간 점검 이력</div><div class="xh">${ms.map(ym=>{const r=extRec(id,ym);return `<div class="xr"><b>${+ym.slice(5)}월</b>${r?`<span class="xs ${extBad(r)?'bad':'ok'}">${extBad(r)?esc(extBadTxt(r)):'정상'}</span><small>${esc(r.d||'')} · ${esc(r.by||'')}</small>${r.a||r.l||r.p?`<small class="xi">외관 ${esc(r.a||'-')} · 표지 ${esc(r.l||'-')} · 압력 ${esc(r.p||'-')}</small>`:''}`:'<span class="xs un">미점검</span>'}</div>`}).join('')}</div>`}
+function extStat(ym){const E=FAC.filter(f=>f.t==='ext'),M=(ST.ext||{})[ym],rec=(M&&M.rec)||{};const done=E.filter(f=>rec[f.id]),badL=done.filter(f=>extBad(rec[f.id])),openL=badL.filter(f=>!extFixed(rec[f.id]));return {total:E.length,done:done.length,bad:badL.length,badL,open:openL.length,openL,fixed:badL.length-openL.length,un:E.filter(f=>!rec[f.id]),rec,at:M&&M.at,by:M&&M.by,date:M&&M.date,file:M&&M.file,extra:Object.keys(rec).filter(id=>!E.some(f=>f.id===id))}}
+function extHistHTML(id){const ms=extMonths().slice().reverse().slice(0,12);if(!ms.length)return '<div class="d-sec">월간 점검 이력</div><p class="hint">아직 올린 점검 결과가 없습니다. 상단 [소화기 점검] → 점검 엑셀 올리기</p>';
+  return `<div class="d-sec">월간 점검 이력</div><div class="xh">${ms.map(ym=>{const r=extRec(id,ym);return `<div class="xr"><b>${+ym.slice(5)}월</b>${r?`<span class="xs ${extOpen(r)?'bad':extBad(r)?'fix':'ok'}">${extBad(r)?esc(extBadTxt(r))+(extFixed(r)?' → 조치 완료':''):'정상'}</span><small>${esc(r.d||'')} · ${esc(r.by||'')}</small>${r.a||r.l||r.p?`<small class="xi">외관 ${esc(r.a||'-')} · 표지 ${esc(r.l||'-')} · 압력 ${esc(r.p||'-')}</small>`:''}`:'<span class="xs un">미점검</span>'}</div>`}).join('')}</div>`}
 let _xlsxP=null;function needXLSX(){if(window.XLSX)return Promise.resolve(window.XLSX);return _xlsxP||(_xlsxP=new Promise((res,rej)=>{const sc=document.createElement('script');sc.src='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';sc.onload=()=>res(window.XLSX);sc.onerror=()=>{_xlsxP=null;rej(new Error('엑셀 읽기 도구를 불러오지 못했습니다(인터넷 연결 확인)'))};document.head.appendChild(sc)}))}
 const toD=v=>{if(typeof v==='number'&&window.XLSX&&v>20000){const o=XLSX.SSF.parse_date_code(v);return `${o.y}-${p2(o.m)}-${p2(o.d)}`}if(v instanceof Date&&!isNaN(v))return `${v.getFullYear()}-${p2(v.getMonth()+1)}-${p2(v.getDate())}`;const m=String(v||'').match(/(\d{4})[-./](\d{1,2})[-./](\d{1,2})/);return m?`${m[1]}-${p2(+m[2])}-${p2(+m[3])}`:''};
 const toT=v=>{if(v instanceof Date&&!isNaN(v))return `${p2(v.getHours())}:${p2(v.getMinutes())}`;if(typeof v==='number'){const s=Math.round(v%1*86400);return `${p2(Math.floor(s/3600))}:${p2(Math.floor(s%3600/60))}`}return String(v||'').slice(0,5)};
@@ -17177,51 +17194,98 @@ async function parseExtFile(file){
   for(const name of wb.SheetNames){const mm=name.match(/^(\d{1,2})월\s*점검/);const isDaily=/데이터\s*입력/.test(name);if(!mm&&!isDaily)continue;
     const rows=X.utils.sheet_to_json(wb.Sheets[name],{header:1,defval:'',raw:true});const hi=rows.findIndex(r=>r.some(c=>String(c).replace(/\s/g,'')==='소화기번호'));if(hi<0)continue;
     const H=rows[hi].map(c=>String(c).replace(/\s/g,''));const col=(...ks)=>H.findIndex(h=>ks.includes(h));
-    const c={id:col('소화기번호'),d:col('점검일자'),t:col('시간','점검시간'),by:col('점검자'),a:col('외관'),l:col('표지'),p:col('압력'),r:col('종합','종합판정'),st:col('상태','점검결과'),fx:col('조치여부')};
+    const c={id:col('소화기번호'),d:col('점검일자'),t:col('시간','점검시간'),by:col('점검자'),a:col('외관'),l:col('표지'),p:col('압력'),r:col('종합','종합판정'),st:col('상태','점검결과'),fx:col('조치여부'),fd:col('조치일시')};
     for(const r of rows.slice(hi+1)){const id=String(r[c.id]||'').trim();if(!id||!/-/.test(id))continue;const d=toD(r[c.d]);
       const ym=d?d.slice(0,7):mm?`${now.getFullYear()}-${p2(+mm[1])}`:null;if(!ym)continue;if(mm&&d&&+d.slice(5,7)!==+mm[1]&&!isDaily){/* 시트 월과 날짜가 다르면 날짜 우선 */}
       const v={d,t:c.t>=0?toT(r[c.t]):'',by:c.by>=0?String(r[c.by]||'').trim():'',a:c.a>=0?String(r[c.a]||'').trim():'',l:c.l>=0?String(r[c.l]||'').trim():'',p:c.p>=0?String(r[c.p]||'').trim():'',r:String((c.r>=0&&r[c.r])||(c.st>=0&&r[c.st])||'').trim()};
-      if(c.fx>=0&&String(r[c.fx]||'').trim())v.fx=String(r[c.fx]).trim();
+      if(c.fx>=0&&String(r[c.fx]||'').trim())v.fx=String(r[c.fx]).trim();if(c.fd>=0&&r[c.fd]!==''&&r[c.fd]!=null){const x=r[c.fd];const dd=toD(x);v.fd=dd?(dd+((x instanceof Date||typeof x==='number')?' '+toT(x):'')):String(x).trim()}
       const M=(out[ym]=out[ym]||{rec:{},dates:new Set(),src:new Set()});const prev=M.rec[id];if(!prev||String(prev.d+prev.t)<=String(v.d+v.t))M.rec[id]=v;if(d)M.dates.add(d);M.src.add(name)}}
   return out}
-let EXP_PARSE=null;
-function openExt(tab){
-  const ms=extMonths(),cur=ymNow(),st=extStat(extCurYm()||ms[ms.length-1]||cur);
-  $('#exSub').textContent=ms.length?`최근 올림 ${ymLabel(ms[ms.length-1])}`:'아직 올린 결과 없음';
-  const trend=ms.slice(-12).map(ym=>{const s=extStat(ym);return {ym,...s,rate:s.total?Math.round(s.done/s.total*100):0}});
-  $('#exBody').innerHTML=`<div class="xup" id="xDrop" tabindex="0" role="button"><b>소화기 점검 엑셀(.xlsm) 올리기</b><span>바코드로 찍은 점검 파일을 여기에 끌어다 놓거나 눌러서 선택하세요 · ‘N월점검’ 시트와 ‘데이터입력’ 시트를 읽습니다 · 파일은 이 브라우저 안에서만 읽습니다</span><input type="file" id="xFile" accept=".xlsm,.xlsx,.xls" hidden></div>
-    <div id="xPrev"></div>
-    ${trend.length?`<div class="xsec">월별 점검 현황</div><div class="tw"><table class="lt"><thead><tr><th>월</th><th>점검일</th><th>점검 완료</th><th>완료율</th><th>이상</th><th>미점검</th><th>올린 사람</th><th></th></tr></thead><tbody>${trend.slice().reverse().map(t=>`<tr><td><b>${ymLabel(t.ym)}</b></td><td class="mono">${esc(t.date||'')}</td><td class="mono">${t.done}/${t.total}</td><td><span class="xbar"><i style="width:${t.rate}%"></i></span> ${t.rate}%</td><td>${t.bad?`<b class="xbadt">${t.bad}</b>`:'0'}</td><td>${t.un.length}</td><td>${esc(t.by||'')}<small class="hint"> ${esc(fmt(t.at)||'')}</small></td><td><button class="sbtn" data-xm="${t.ym}">상세</button>${Auth.isAdmin()?` <button class="sbtn del" data-xdel="${t.ym}">삭제</button>`:''}</td></tr>`).join('')}</tbody></table></div><div class="bk" style="margin-top:8px"><button class="btn ghost sm" id="xCsv">월별 현황 엑셀(CSV)</button></div>`:''}
-    <div id="xDet"></div>`;
-  const inp=$('#xFile'),dr=$('#xDrop');dr.onclick=()=>inp.click();dr.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();inp.click()}};
-  dr.ondragover=e=>{e.preventDefault();dr.classList.add('over')};dr.ondragleave=()=>dr.classList.remove('over');dr.ondrop=e=>{e.preventDefault();dr.classList.remove('over');extRead(e.dataTransfer.files[0])};inp.onchange=()=>extRead(inp.files[0]);
-  $$('[data-xm]','#exBody').forEach(b=>b.onclick=()=>extDetail(b.dataset.xm));
-  $$('[data-xdel]','#exBody').forEach(b=>b.onclick=async()=>{const ym=b.dataset.xdel;const why=await askReason('소화기 점검 결과 삭제',`<b>${ymLabel(ym)}</b> 점검 결과 ${Object.keys(ST.ext[ym].rec).length}건`);if(!why){openExt();return}
-    commit([{p:['ext',ym],v:null},trashOp('ext',{k:ym},ST.ext[ym],why,`${ymLabel(ym)} 소화기 점검 결과`),lg('소화기 점검 결과 삭제',ymLabel(ym),`사유: ${why}`)]);toast('삭제했습니다 · 보관함에 30일 보관');openExt()});
-  const xc=$('#xCsv');if(xc)xc.onclick=()=>dlCSV('소화기_월별점검현황',[['월','점검일','점검완료','전체','완료율(%)','이상','미점검','올린 사람']].concat(trend.map(t=>[ymLabel(t.ym),t.date||'',t.done,t.total,t.rate,t.bad,t.un.length,t.by||''])));
-  if(tab)extDetail(tab);openModal('extModal')}
+let EXP_PARSE=null;const EXT={ym:null};
+function openExt(tab){if(tab)EXT.ym=tab;showSheet('extSheet')}
+const extBlds=()=>{const set=new Set(FAC.filter(f=>f.t==='ext').map(bldOf));return [...BLD_ORDER.filter(b=>set.has(b)),...[...set].filter(b=>!BLD_ORDER.includes(b))]};
+function extGroup(ym,keyFn,keys){const s=extStat(ym),m=new Map();(keys||[]).forEach(k=>m.set(k,{k,total:0,done:0,ok:0,bad:0,open:0,un:0}));
+  for(const f of FAC.filter(f=>f.t==='ext')){const k=keyFn(f)||'(미지정)';if(!m.has(k))m.set(k,{k,total:0,done:0,ok:0,bad:0,open:0,un:0});const g=m.get(k),r=s.rec[f.id];g.total++;if(!r){g.un++;continue}g.done++;if(extBad(r)){g.bad++;if(!extFixed(r))g.open++}else g.ok++}
+  return [...m.values()].filter(g=>g.total)}
+function extFdTxt(r){if(!r||!r.fd)return '';const m=String(r.fd).match(/\d{4}-(\d{2})-(\d{2})(?:\s+(\d{2}:\d{2}))?/);return m?`${+m[1]}/${+m[2]}${m[3]?' '+m[3]:''}`:String(r.fd)}
+function extDraft(ym){const s=extStat(ym),y=+ym.slice(0,4),m=+ym.slice(5),last=new Date(y,m,0).getDate();const rate=s.total?(s.done/s.total*100).toFixed(1):'0.0';
+  const act=!s.bad?'이상 소화기 없음':!s.open?`이상 ${s.bad}개 발견, 전건 현장 조치 완료`:`이상 ${s.bad}개 중 ${s.fixed}개 조치 완료, ${s.open}개 조치 진행 중 (완료 시 추가 보고)`;
+  const det=s.badL.slice(0,10).map(f=>{const r=s.rec[f.id];return `   - ${f.id} (${bldOf(f)} ${locOf(f)}) : ${extBadTxt(r)} → ${extFixed(r)?'조치 완료'+(extFdTxt(r)?`(${extFdTxt(r)})`:''):'조치 진행 중'}`});
+  if(s.badL.length>10)det.push(`   - 외 ${s.badL.length-10}개`);
+  return {title:`[${y}년 ${m}월] 소화기 월간 점검 결과 보고`,
+    body:[`1. 점검기간 : ${y}년 ${m}월 1일 ~ ${m}월 ${last}일`,`2. 점검대상 : 횡성공장 소화기 ${s.total}개 (${extBlds().join(', ')})`,
+      `3. 점검결과 : ${s.done}개 점검 완료 (점검율 ${rate}%) / 정상 ${s.done-s.bad}개, 이상 ${s.bad}개${s.un.length?`, 미점검 ${s.un.length}개`:''}`,
+      `4. 조치사항 : ${act}`,...det,'5. 첨부 : 소화기 월간 점검 결과 보고 1부.  끝.'].join('\n')}}
+function copyTxt(t,msg){const ok=()=>toast(msg||'복사했습니다');if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(t).then(ok,()=>fb());else fb();
+  function fb(){const ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){toast('복사하지 못했습니다. 직접 선택해서 복사하세요',3000)}ta.remove()}}
+function renderExt(){const el=$('#exBody');if(!el)return;const ms=extMonths();
+  if(!EXT.ym||!ms.includes(EXT.ym))EXT.ym=extCurYm()||ms[ms.length-1]||null;const ym=EXT.ym;
+  $('#exSub').textContent=ms.length?`${ms.length}개월 결과 · 최근 ${ymLabel(ms[ms.length-1])}`:'아직 올린 결과 없음';
+  const sel=$('#exMonth');sel.innerHTML=ms.length?ms.slice().reverse().map(m=>`<option value="${m}" ${m===ym?'selected':''}>${ymLabel(m)}</option>`).join(''):'<option>결과 없음</option>';sel.disabled=!ms.length;
+  sel.onchange=()=>{EXT.ym=sel.value;renderExt()};$('#exCsv').disabled=!ym;$('#exDraftBtn').disabled=!ym;
+  const up=`<div class="xup ${ym?'mini':''}" id="xDrop" tabindex="0" role="button"><b>${SV('<path d="M12 20V9M7 14l5-5 5 5M5 4h14"/>')} 점검 엑셀(.xlsm) 올리기</b><span>바코드 점검 파일을 끌어다 놓거나 눌러서 선택 · ‘N월점검’·‘데이터입력’ 시트를 읽습니다 · 파일은 이 브라우저 안에서만 읽습니다</span><input type="file" id="xFile" accept=".xlsm,.xlsx,.xls" hidden></div><div id="xPrev"></div>`;
+  if(!ym){el.innerHTML=up+`<div class="xcard" style="margin-top:12px"><h3>사용 방법</h3><p class="hint" style="line-height:1.8">① 엑셀에서 바코드 점검 후 [월마감] 매크로를 실행합니다.<br>② 저장한 .xlsm 파일을 위 칸에 올립니다.<br>③ 월별 점검률·건물별·담당자별 현황, 이상·조치 현황, 기안 문구가 자동으로 만들어집니다.</p></div>`;extBind(el);return}
+  const s=extStat(ym),rate=s.total?Math.round(s.done/s.total*1000)/10:0;
+  const kp=(lb,v,unit,sub,cls)=>`<div class="kpi ${cls||''}"><div class="lb">${lb}</div><div class="v">${v}<small>${unit||''}</small></div>${sub?`<div class="s">${sub}</div>`:''}</div>`;
+  const tbl=(title,rows,lab)=>{const T={total:0,done:0,ok:0,bad:0,open:0,un:0};rows.forEach(g=>Object.keys(T).forEach(k=>T[k]+=g[k]));
+    const tr=(g,cls)=>`<tr class="${cls||''}"><td>${esc(g.k)}</td><td class="num">${g.total}</td><td class="num">${g.done}</td><td class="num">${g.ok}</td><td class="num">${g.bad?`<b class="xbadt">${g.bad}</b>`:0}</td><td class="num">${g.open?`<b class="xbadt">${g.open}</b>`:0}</td><td class="num">${g.un}</td><td class="nw"><span class="xbar"><i style="width:${g.total?g.done/g.total*100:0}%"></i></span> ${g.total?Math.round(g.done/g.total*100):0}%</td></tr>`;
+    return `<div class="hcard"><div class="hc-h"><h3>${title}</h3></div><div class="tw"><table class="lt"><thead><tr><th>${lab}</th><th class="num">전체</th><th class="num">점검</th><th class="num">정상</th><th class="num">이상</th><th class="num">미조치</th><th class="num">미점검</th><th>점검률</th></tr></thead><tbody>${rows.map(g=>tr(g)).join('')}${tr({k:'합계',...T},'tot')}</tbody></table></div></div>`};
+  const grp={};s.un.forEach(f=>(grp[bldOf(f)]=grp[bldOf(f)]||[]).push(f));
+  const trend=ms.slice(-12).map(m=>{const x=extStat(m);return {ym:m,...x,rate:x.total?Math.round(x.done/x.total*100):0}});
+  const D=extDraft(ym);
+  el.innerHTML=up+`
+    <div class="xk">
+      ${kp('전체 소화기',s.total,'개','')}
+      ${kp('점검 완료',s.done,'개',`점검률 ${rate}%`,s.un.length?'':'good')}
+      ${kp('미점검',s.un.length,'개',s.un.length?'아래 목록 확인':'전체 점검',s.un.length?'warn':'')}
+      ${kp('이상 발견',s.bad,'개',s.bad?'외관·표지·압력':'이상 없음',s.bad?'':'good')}
+      ${kp('조치 완료',s.fixed,'개',s.bad?`이상 ${s.bad}개 중`:'-',s.bad&&!s.open?'good':'')}
+      ${kp('미조치',s.open,'개',s.open?'조치 후 재업로드':'남은 조치 없음',s.open?'warn':'good')}
+    </div>
+    <p class="hint" style="margin:-2px 0 12px">${esc(ymLabel(ym))} · 점검일 ${esc(s.date||'-')} · ${esc(s.by||'')} 올림 ${esc(fmt(s.at)||'')}${s.file?` · ${esc(s.file)}`:''}</p>
+    ${s.bad?`<div class="xcard"><h3>이상 소화기 <span class="xs ${s.open?'bad':'fix'}">${s.open?`미조치 ${s.open}`:'전건 조치 완료'}</span></h3><div class="tw"><table class="lt"><thead><tr><th>소화기번호</th><th>건물 · 위치</th><th>이상 항목</th><th>조치</th><th>담당자</th><th>점검</th></tr></thead><tbody>
+      ${s.badL.map(f=>{const r=s.rec[f.id];return `<tr class="lk" data-xgo="${esc(f._k)}"><td class="mono nw"><b>${esc(f.id)}</b></td><td>${esc(bldOf(f))} · ${esc(locOf(f))}</td><td><span class="xs bad">${esc(extBadTxt(r))}</span></td><td>${extFixed(r)?`<span class="xs fix">조치 완료${extFdTxt(r)?' · '+esc(extFdTxt(r)):''}</span>`:'<span class="xs bad">미조치</span>'}</td><td class="nw">${esc(ownerOf(f)||'-')}</td><td class="nw">${esc(r.d||'')} ${esc(r.by||'')}</td></tr>`}).join('')}</tbody></table></div><p class="hint" style="margin-top:6px">행을 누르면 도면에서 해당 소화기를 엽니다.</p></div>`:''}
+    <div class="xcols">${tbl('건물별 점검 현황',extGroup(ym,bldOf,extBlds()),'건물')}${tbl('담당자별 점검 현황',extGroup(ym,f=>ownerOf(f)),'담당자')}</div>
+    ${s.un.length?`<div class="xcard"><h3>미점검 소화기 <span class="xs un">${s.un.length}개</span></h3><div class="xlist">${Object.entries(grp).map(([b,L])=>`<div class="xg"><span>${esc(b)} ${L.length}</span>${L.map(f=>`<button class="xchip" data-xgo="${esc(f._k)}">${esc(f.id)} <small>${esc(locOf(f))}</small></button>`).join('')}</div>`).join('')}</div></div>`:''}
+    ${s.extra.length?`<p class="hint">대시보드 설비 목록에 없는 번호 ${s.extra.length}개: ${esc(s.extra.join(', '))} — 신규 설치 소화기면 도면에서 설비 등록 후 다시 올려 주세요.</p>`:''}
+    <div class="xcard" id="xDraft"><h3>기안 문구 <small class="hint">엑셀 ‘월간보고’ 시트와 같은 형식</small><span class="sp"></span><button class="sbtn" id="xCopyT">제목 복사</button><button class="sbtn" id="xCopyB">본문 복사</button></h3>
+      <div class="xdt">${esc(D.title)}</div><pre class="xdraft">${esc(D.body)}</pre></div>
+    <div class="xcard"><h3>월별 점검 추이<span class="sp"></span><button class="sbtn" id="xCsv">월별 현황 CSV</button></h3><div class="tw"><table class="lt"><thead><tr><th>월</th><th>점검일</th><th class="num">점검</th><th>점검률</th><th class="num">이상</th><th class="num">미조치</th><th class="num">미점검</th><th>올린 사람</th><th></th></tr></thead><tbody>${trend.slice().reverse().map(t=>`<tr ${t.ym===ym?'style="background:var(--bg)"':''}><td class="nw"><b>${ymLabel(t.ym)}</b></td><td class="mono">${esc(t.date||'')}</td><td class="num mono">${t.done}/${t.total}</td><td class="nw"><span class="xbar"><i style="width:${t.rate}%"></i></span> ${t.rate}%</td><td class="num">${t.bad?`<b class="xbadt">${t.bad}</b>`:'0'}</td><td class="num">${t.open?`<b class="xbadt">${t.open}</b>`:'0'}</td><td class="num">${t.un.length}</td><td>${esc(t.by||'')}<small class="hint"> ${esc(fmt(t.at)||'')}</small></td><td class="nw">${t.ym!==ym?`<button class="sbtn" data-xm="${t.ym}">보기</button>`:''}${Auth.isAdmin()?` <button class="sbtn del" data-xdel="${t.ym}">삭제</button>`:''}</td></tr>`).join('')}</tbody></table></div></div>`;
+  extBind(el);
+  $('#xCopyT').onclick=()=>copyTxt(D.title,'제목을 복사했습니다');$('#xCopyB').onclick=()=>copyTxt(D.body,'본문을 복사했습니다');
+  $$('[data-xm]',el).forEach(b=>b.onclick=()=>{EXT.ym=b.dataset.xm;renderExt();$('#extSheet .sh-body').scrollTop=0});
+  $$('[data-xdel]',el).forEach(b=>b.onclick=async()=>{const m=b.dataset.xdel;const why=await askReason('소화기 점검 결과 삭제',`<b>${ymLabel(m)}</b> 점검 결과 ${Object.keys(ST.ext[m].rec).length}건`);if(!why)return;
+    commit([{p:['ext',m],v:null},trashOp('ext',{k:m},ST.ext[m],why,`${ymLabel(m)} 소화기 점검 결과`),lg('소화기 점검 결과 삭제',ymLabel(m),`사유: ${why}`)]);toast('삭제했습니다 · 보관함에 30일 보관');renderExt()});
+  $('#xCsv').onclick=()=>dlCSV('소화기_월별점검현황',[['월','점검일','점검완료','전체','완료율(%)','이상','조치완료','미조치','미점검','올린 사람']].concat(trend.map(t=>[ymLabel(t.ym),t.date||'',t.done,t.total,t.rate,t.bad,t.fixed,t.open,t.un.length,t.by||''])));
+}
+function extBind(el){const inp=$('#xFile'),dr=$('#xDrop');dr.onclick=e=>{if(e.target!==inp)inp.click()};dr.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();inp.click()}};
+  dr.ondragover=e=>{e.preventDefault();dr.classList.add('over')};dr.ondragleave=()=>dr.classList.remove('over');dr.ondrop=e=>{e.preventDefault();dr.classList.remove('over');extRead(e.dataTransfer.files[0])};inp.onchange=()=>{extRead(inp.files[0]);inp.value=''};
+  $$('[data-xgo]',el).forEach(b=>b.onclick=()=>{closeSheets();if(!S.extView){S.extView=true;$('#extView').classList.add('on');buildCluster();renderMarkers()}openDetail(b.dataset.xgo,true)})}
+$('#exCsv').onclick=()=>{const ym=EXT.ym;if(!ym)return;const s=extStat(ym);
+  dlCSV(`소화기_점검결과_${ym}`,[['소화기번호','건물','구역','위치','담당자','점검일','시간','점검자','외관','표지','압력','결과','조치','조치일시']].concat(FAC.filter(f=>f.t==='ext').sort((a,b)=>ko(a.id,b.id)).map(f=>{const r=s.rec[f.id];
+    return [f.id,bldOf(f),f.z,locOf(f),ownerOf(f),r?r.d:'',r?r.t:'',r?r.by:'',r?r.a:'',r?r.l:'',r?r.p:'',!r?'미점검':extBad(r)?'이상('+extBadTxt(r)+')':'정상',r&&extBad(r)?(extFixed(r)?'조치 완료':'미조치'):'',r&&r.fd||'']})))};
+$('#exDraftBtn').onclick=()=>{const d=$('#xDraft');if(d)d.scrollIntoView({behavior:'smooth',block:'start'})};
 async function extRead(file){if(!file)return;const pv=$('#xPrev');pv.innerHTML='<p class="hint">파일을 읽는 중…</p>';
   try{const P=await parseExtFile(file);const yms=Object.keys(P).sort();if(!yms.length){pv.innerHTML='<div class="err">‘소화기번호’ 열이 있는 점검 시트(N월점검 또는 데이터입력)를 찾지 못했습니다.</div>';return}
     EXP_PARSE={P,file:file.name};const ids=new Set(FAC.filter(f=>f.t==='ext').map(f=>f.id));
     pv.innerHTML=`<div class="xsec">읽은 결과 · ${esc(file.name)}</div><div class="tw"><table class="lt"><thead><tr><th><input type="checkbox" id="xAll" checked></th><th>월</th><th>점검일</th><th>점검</th><th>이상</th><th>대시보드에 없는 번호</th><th>기존 자료</th></tr></thead><tbody>${yms.map(ym=>{const M=P[ym],rec=M.rec,n=Object.keys(rec).length,bad=Object.values(rec).filter(extBad).length,unk=Object.keys(rec).filter(id=>!ids.has(id));const had=ST.ext&&ST.ext[ym];
       return `<tr><td><input type="checkbox" data-xs="${ym}" checked></td><td><b>${ymLabel(ym)}</b><small class="hint"> ${esc([...M.src].join(', '))}</small></td><td class="mono">${esc([...M.dates].sort().join(', '))}</td><td class="mono">${n}</td><td>${bad?`<b class="xbadt">${bad}</b>`:'0'}</td><td>${unk.length?`<span class="hint" title="${esc(unk.join(', '))}">${unk.length}개 (${esc(unk.slice(0,2).join(', '))}${unk.length>2?'…':''})</span>`:'없음'}</td><td>${had?'<span class="hint">덮어씀</span>':'새로 추가'}</td></tr>`}).join('')}</tbody></table></div>
-      <button type="button" class="tgl on" id="xNote"><span>이상이 있는 소화기는 특이사항으로 자동 등록<small>같은 달 같은 소화기는 한 번만 등록 · 조치 완료는 특이사항에서 처리</small></span><span class="sw"></span></button>
+      <button type="button" class="tgl on" id="xNote"><span>이상이 있는 소화기는 특이사항으로 자동 등록<small>같은 달 같은 소화기는 한 번만 등록 · 엑셀에서 조치완료로 기록된 건은 ‘조치 완료’로 함께 처리</small></span><span class="sw"></span></button>
       <div class="bk"><button class="btn" id="xGo">선택한 달 올리기</button><button class="btn ghost" id="xCancel">취소</button></div>`;
-    $('#xAll').onchange=e=>$$('[data-xs]').forEach(c=>c.checked=e.target.checked);$('#xNote').onclick=()=>$('#xNote').classList.toggle('on');$('#xCancel').onclick=()=>{EXP_PARSE=null;pv.innerHTML=''};
+    $('#xAll').onchange=e=>$$('[data-xs]').forEach(c=>c.checked=e.target.checked);$('#xNote').onclick=()=>$('#xNote').classList.toggle('on');$('#xCancel').onclick=()=>{EXP_PARSE=null;pv.innerHTML='';renderExt()};
     $('#xGo').onclick=()=>extSave($$('[data-xs]').filter(c=>c.checked).map(c=>c.dataset.xs),$('#xNote').classList.contains('on'))}
   catch(e){pv.innerHTML=`<div class="err">${esc(e.message||String(e))}</div>`}}
-function extSave(yms,mkNote){if(!EXP_PARSE||!yms.length)return;const {P,file}=EXP_PARSE;const ops=[];let nN=0;const byId=Object.fromEntries(FAC.filter(f=>f.t==='ext').map(f=>[f.id,f]));
+function extSave(yms,mkNote){if(!EXP_PARSE||!yms.length)return;const {P,file}=EXP_PARSE;const ops=[];let nN=0,nF=0;const byId=Object.fromEntries(FAC.filter(f=>f.t==='ext').map(f=>[f.id,f]));
+  const fdISO=r=>{const m=String(r.fd||'').match(/(\d{4}-\d{2}-\d{2})(?:\s+(\d{2}:\d{2}))?/);return m?new Date(m[1]+'T'+(m[2]||'12:00')+':00').toISOString():nowISO()};
   for(const ym of yms){const M=P[ym];const dates=[...M.dates].sort();ops.push({p:['ext',ym],v:{at:nowISO(),by:Auth.me.name,file,date:dates.length?(dates.length>1?`${dates[0]}~${dates[dates.length-1].slice(5)}`:dates[0]):'',rec:M.rec}});
-    if(mkNote)for(const [id,r] of Object.entries(M.rec)){const f=byId[id];if(!f||!extBad(r))continue;const nk='ext'+ym.replace('-','');if((ST.notes[f._k]||{})[nk])continue;
-      ops.push({p:['notes',f._k,nk],v:{t:`[${+ym.slice(5)}월 소화기 점검] ${extBadTxt(r)}${r.fx?` · 현장 조치: ${r.fx}`:''}`,at:r.d?new Date(r.d+'T'+(r.t||'09:00')+':00').toISOString():nowISO(),n:r.by||Auth.me.name}});nN++}
-    const n=Object.keys(M.rec).length,bad=Object.values(M.rec).filter(extBad).length;ops.push(lg('소화기 점검 결과 올리기',ymLabel(ym),`${n}개 점검 · 이상 ${bad} · ${file}`))}
-  commit(ops);EXP_PARSE=null;toast(`${yms.length}개월 점검 결과를 올렸습니다${nN?` · 특이사항 ${nN}건 자동 등록`:''}`,3000);openExt()}
-function extDetail(ym){const s=extStat(ym),el=$('#xDet');const grp={};s.un.forEach(f=>(grp[bldOf(f)]=grp[bldOf(f)]||[]).push(f));
-  el.innerHTML=`<div class="xsec">${ymLabel(ym)} 상세 · 점검 ${s.done}/${s.total}</div>
-    ${s.bad?`<div class="xlist"><b class="xbadt">이상 ${s.bad}개</b>${s.badL.map(f=>`<button class="xchip bad" data-xgo="${esc(f._k)}">${esc(f.id)} <small>${esc(extBadTxt(extRec(f.id,ym)))}</small></button>`).join('')}</div>`:''}
-    ${s.un.length?`<div class="xlist"><b>미점검 ${s.un.length}개</b>${Object.entries(grp).map(([b,L])=>`<div class="xg"><span>${esc(b)} ${L.length}</span>${L.map(f=>`<button class="xchip" data-xgo="${esc(f._k)}">${esc(f.id)} <small>${esc(locOf(f))}</small></button>`).join('')}</div>`).join('')}</div>`:'<p class="hint">모든 소화기를 점검했습니다.</p>'}
-    ${s.extra.length?`<p class="hint">대시보드 설비 목록에 없는 번호 ${s.extra.length}개: ${esc(s.extra.join(', '))} — 신규 설치 소화기면 도면에서 설비 등록 후 다시 올려 주세요.</p>`:''}`;
-  $$('[data-xgo]',el).forEach(b=>b.onclick=()=>{closeModal('extModal');closeSheets();if(!S.extView){S.extView=true;$('#extView').classList.add('on');buildCluster();renderMarkers()}openDetail(b.dataset.xgo,true)});el.scrollIntoView({behavior:'smooth',block:'start'})}
+    if(mkNote)for(const [id,r] of Object.entries(M.rec)){const f=byId[id];if(!f||!extBad(r))continue;const nk='ext'+ym.replace('-','');const fixed=extFixed(r);const old=(ST.notes[f._k]||{})[nk];
+      if(old){if(fixed&&!old.done){ops.push({p:['notes',f._k,nk,'done'],v:fdISO(r)},{p:['notes',f._k,nk,'dn'],v:r.by||Auth.me.name});nF++}continue}
+      const extra=r.fx&&!/^(o|x|ㅇ|y|n|완료|미조치|조치\s*완료)$/i.test(r.fx)?` · 조치: ${r.fx}`:'';
+      const v={t:`[${+ym.slice(5)}월 소화기 점검] ${extBadTxt(r)}${fixed?' · 현장 조치 완료':''}${extra}`,at:r.d?new Date(r.d+'T'+(r.t||'09:00')+':00').toISOString():nowISO(),n:r.by||Auth.me.name};
+      if(fixed){v.done=fdISO(r);v.dn=r.by||Auth.me.name;nF++}ops.push({p:['notes',f._k,nk],v});nN++}
+    const n=Object.keys(M.rec).length,bad=Object.values(M.rec).filter(extBad).length,op=Object.values(M.rec).filter(extOpen).length;ops.push(lg('소화기 점검 결과 올리기',ymLabel(ym),`${n}개 점검 · 이상 ${bad} (미조치 ${op}) · ${file}`))}
+  commit(ops);EXP_PARSE=null;EXT.ym=yms[yms.length-1];toast(`${yms.length}개월 점검 결과를 올렸습니다${nN?` · 특이사항 ${nN}건 등록`:''}${nF?` · 조치 완료 ${nF}건 반영`:''}`,3200);renderExt();$('#extSheet .sh-body').scrollTop=0}
+function extDetail(ym){openExt(ym)}
 
 /* ---------- 소화기 담당자별 보기 ---------- */
 const ownerOf=f=>String((f.info&&f.info['담당자'])||'').trim();
@@ -17552,13 +17616,13 @@ $('#pwLater').onclick=()=>{$('#pwModal').dataset.sticky='';closeModal('pwModal')
 
 /* ---------- sheets / navigation ---------- */
 function showSheet(id){if(S.pick)cancelPick();closeDetail();$$('.sheet').forEach(s=>s.classList.toggle('on',s.id===id));$('#notesBtn').classList.toggle('on',id==='notesSheet');$('#listBtn').classList.toggle('on',id==='listSheet');
-  ({homeSheet:renderHome,notesSheet:renderNoteCards,listSheet:()=>{fillZoneSel();renderTable()},crewSheet:renderCrew,mgmtSheet:renderMgmt})[id]();renderFloors();const b=$('#'+id+' .sh-body');if(b)b.scrollTop=0}
+  ({homeSheet:renderHome,notesSheet:renderNoteCards,listSheet:()=>{fillZoneSel();renderTable()},crewSheet:renderCrew,mgmtSheet:renderMgmt,extSheet:renderExt})[id]();renderFloors();const b=$('#'+id+' .sh-body');if(b)b.scrollTop=0}
 function closeSheets(){const was=curSheet();$$('.sheet').forEach(s=>s.classList.remove('on'));$('#notesBtn').classList.remove('on');$('#listBtn').classList.remove('on');if(was){renderFloors();setTimeout(()=>map.invalidateSize(),0)}}
 $$('[data-close]').forEach(b=>b.onclick=closeSheets);
 $('#notesBtn').onclick=()=>curSheet()==='notesSheet'?closeSheets():showSheet('notesSheet');
 $('#listBtn').onclick=()=>curSheet()==='listSheet'?closeSheets():showSheet('listSheet');
 $('#floors').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
-  if(b.dataset.nav){showSheet({home:'homeSheet',crew:'crewSheet',mgmt:'mgmtSheet'}[b.dataset.nav]);return}
+  if(b.dataset.nav){showSheet({home:'homeSheet',ext:'extSheet',crew:'crewSheet',mgmt:'mgmtSheet'}[b.dataset.nav]);return}
   const P=S.pick;closeSheets();
   if(P&&P.mode==='add'){closeModal('facModal');pickLayer.clearLayers();S.pick.ll=null;setArea(b.dataset.a);toast(`${AMAP[b.dataset.a].label} 도면 · 설치할 위치를 클릭하세요`);return}
   if(P)cancelPick();closeDetail();setArea(b.dataset.a);b.scrollIntoView({inline:'nearest',block:'nearest'})});
